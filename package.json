@@ -1,0 +1,17 @@
+{
+  "name": "voicepay",
+  "version": "1.0.0",
+  "description": "VoicePay - Voice-based Payment Platform",
+  "engines": {
+    "node": "18.x"
+  },
+  "scripts": {
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install && cd ../desktop && npm install",
+    "start": "cd backend && npm start",
+    "dev": "cd backend && npm run dev",
+    "test": "cd backend && npm test"
+  },
+  "keywords": ["voicepay", "payment", "voice", "upi"],
+  "author": "VoicePay Team",
+  "license": "MIT"
+}
