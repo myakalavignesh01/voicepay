@@ -1,55 +1,33 @@
-# VoicePay Desktop Application
+# VoicePay Desktop
 
-Modern desktop application for VoicePay - Voice-based Payment Platform
+Professional desktop application for VoicePay payment platform
 
-## 🚀 Features
+## Features
+✅ User authentication  
+✅ Dashboard with stats  
+✅ Payment management  
+✅ Security settings  
+✅ Cross-platform support  
 
-✅ User authentication
-✅ Dashboard with statistics
-✅ Payment management
-✅ Analytics & insights
-✅ Settings & preferences
-✅ Security settings
-✅ Real-time transaction updates
-✅ Cross-platform (Windows, macOS, Linux)
-
-## 📦 Installation
+## Installation
 
 ```bash
 cd desktop
 npm install
 ```
 
-## 🏃 Running
+## Running
 
 ```bash
 npm start
 ```
 
-## 🏗️ Building
+## Building
 
 ```bash
 npm run build
 ```
 
-## 📁 Structure
-
-```
-src/
-├── components/    # Reusable components
-├── pages/         # Page components
-├── App.js         # Main app component
-├── index.js       # Entry point
-└── index.css      # Global styles
-```
-
-## 🎨 Technologies
-
-- React 18
-- Electron
-- Axios for API calls
-- React Router for navigation
-
-## 📝 License
+## License
 
 MIT

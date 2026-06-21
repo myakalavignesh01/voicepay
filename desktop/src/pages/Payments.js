@@ -7,7 +7,6 @@ function Payments() {
   const [payments, setPayments] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [amount, setAmount] = useState('');
-  const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -22,27 +21,22 @@ function Payments() {
       });
       setPayments(response.data.transactions);
     } catch (error) {
-      console.error('Error fetching payments:', error);
+      console.error('Error:', error);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
     try {
       const token = localStorage.getItem('token');
-      await axios.post(
-        `${API}/api/payments/initiate`,
-        { amount: parseFloat(amount), description },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+      await axios.post(`${API}/api/payments/initiate`, { amount: parseFloat(amount) },
+        { headers: { Authorization: `Bearer ${token}` } });
       setAmount('');
-      setDescription('');
       setShowForm(false);
       fetchPayments();
     } catch (error) {
-      console.error('Error initiating payment:', error);
+      console.error('Error:', error);
     } finally {
       setLoading(false);
     }
@@ -54,35 +48,16 @@ function Payments() {
       <button className="btn-primary" onClick={() => setShowForm(!showForm)}>
         {showForm ? 'Cancel' : '+ New Payment'}
       </button>
-
       {showForm && (
         <form onSubmit={handleSubmit} className="payment-form">
-          <input
-            type="number"
-            placeholder="Amount"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            required
-          />
-          <input
-            type="text"
-            placeholder="Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-          <button type="submit" disabled={loading}>
-            {loading ? 'Processing...' : 'Initiate Payment'}
-          </button>
+          <input type="number" placeholder="Amount" value={amount} onChange={(e) => setAmount(e.target.value)} required />
+          <button type="submit" disabled={loading}>{loading ? 'Processing...' : 'Pay'}</button>
         </form>
       )}
-
       <div className="payments-list">
         {payments.map((p) => (
           <div key={p._id} className="payment-item">
-            <div>
-              <h3>₹{p.amount}</h3>
-              <p>{p.description}</p>
-            </div>
+            <div><h3>₹{p.amount}</h3><p>{p.description}</p></div>
             <span className={`status ${p.status}`}>{p.status}</span>
           </div>
         ))}

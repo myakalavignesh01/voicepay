@@ -18,13 +18,3 @@
   font-size: 18px;
   background: #f4f7fb;
 }
-
-@media (max-width: 768px) {
-  .app-container {
-    flex-direction: column;
-  }
-
-  .main-content {
-    padding: 10px;
-  }
-}

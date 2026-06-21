@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
 import Payments from './pages/Payments';
-import Analytics from './pages/Analytics';
 import Settings from './pages/Settings';
 import Login from './pages/Login';
 import './App.css';
@@ -18,13 +17,8 @@ function App() {
     setLoading(false);
   }, []);
 
-  if (loading) {
-    return <div className="loader">Loading...</div>;
-  }
-
-  if (!isAuthenticated) {
-    return <Login setIsAuthenticated={setIsAuthenticated} />;
-  }
+  if (loading) return <div className="loader">Loading...</div>;
+  if (!isAuthenticated) return <Login setIsAuthenticated={setIsAuthenticated} />;
 
   return (
     <Router>
@@ -34,7 +28,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/payments" element={<Payments />} />
-            <Route path="/analytics" element={<Analytics />} />
             <Route path="/settings" element={<Settings />} />
           </Routes>
         </main>
